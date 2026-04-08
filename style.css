@@ -27,8 +27,15 @@ body {
 
 h1 {
     color: #333;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     font-size: 1.5em;
+}
+
+#question-counter {
+    font-size: 1.1em;
+    color: #666;
+    margin-bottom: 10px;
+    text-align: center;
 }
 
 #question {
@@ -59,41 +66,45 @@ h1 {
     transition: width 0.1s linear;
 }
 
-#answer {
-    padding: 12px;
-    font-size: 1.2em;
-    width: calc(100% - 24px);
-    box-sizing: border-box;
-    margin: 10px 0;
-    border: 2px solid #ddd;
-    border-radius: 8px;
-    transition: border-color 0.3s;
+#options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin: 20px 0;
 }
 
-#answer:focus {
-    border-color: #4CAF50;
-    outline: none;
-}
-
-#submit {
-    padding: 12px 25px;
+.option {
+    padding: 15px;
     font-size: 1.1em;
-    background: linear-gradient(45deg, #4CAF50, #45a049);
+    background: linear-gradient(45deg, #2196F3, #21CBF3);
     color: white;
     border: none;
-    border-radius: 8px;
+    border-radius: 10px;
     cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s;
-    margin-top: 10px;
+    transition: transform 0.2s, box-shadow 0.2s, background 0.3s;
+    text-align: center;
 }
 
-#submit:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(76, 175, 80, 0.4);
+.option:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(33, 150, 243, 0.4);
 }
 
-#submit:active {
+.option:active {
     transform: translateY(0);
+}
+
+.option.correct {
+    background: linear-gradient(45deg, #4CAF50, #45a049);
+}
+
+.option.wrong {
+    background: linear-gradient(45deg, #f44336, #d32f2f);
+}
+
+.option.disabled {
+    pointer-events: none;
+    opacity: 0.6;
 }
 
 #feedback {
@@ -132,4 +143,44 @@ h1 {
 
 .wrong-bg {
     background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+}
+
+#end-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 1.5em;
+    text-align: center;
+    z-index: 10;
+}
+
+#end-screen.hidden {
+    display: none;
+}
+
+#end-message {
+    margin-bottom: 20px;
+}
+
+#restart {
+    padding: 15px 30px;
+    font-size: 1.2em;
+    background: linear-gradient(45deg, #FF5722, #FF9800);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+#restart:hover {
+    transform: translateY(-2px);
 }
